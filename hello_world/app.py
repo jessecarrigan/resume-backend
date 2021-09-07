@@ -66,7 +66,9 @@ def update_views(event, context):
             }
         }
     )
-    
+
+    new_count = int(count['Item']['count']['N']) + 1
+
     update_count = client.put_item(
         TableName='views',
         Item={
@@ -74,7 +76,7 @@ def update_views(event, context):
                 'S': 'views'
             },
             'count': {
-                'N': str(count['Item']['count']['N'])
+                'N': str(new_count)
             }
         }
     )
