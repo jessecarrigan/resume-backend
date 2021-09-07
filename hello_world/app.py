@@ -56,25 +56,32 @@ def get_views(event, context):
     return response
 
 
-def put_views(event, context):
+def update_views(event, context):
     client = boto3.client('dynamodb')
-    body = event['body']
-    count = json.loads(body)
-    data = client.put_item(
-                TableName='views',
+    count = client.get_item(
+        TableName='views',
+        Key={
+            'id': {
+                'S': 'views'
+            }
+        }
+    )
+    
+    update_count = client.put_item(
+        TableName='views',
         Item={
             'id': {
                 'S': 'views'
             },
             'count': {
-                'N': str(count['count'])
+                'N': str(count['Item']['count']['N'])
             }
         }
     )
 
     response = {
         'statusCode': 200,
-        'body': json.dumps(data),
+        'body': json.dumps(update_count),
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'

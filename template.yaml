@@ -46,7 +46,7 @@ Resources:
           Type: HttpApi
           Properties:
             Path: /views
-            Method: PUT
+            Method: POST
 
   ItemsTable:
     Type: AWS::Serverless::SimpleTable
