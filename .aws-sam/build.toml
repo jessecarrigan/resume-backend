@@ -6,6 +6,6 @@ codeuri = "/Users/jesse.carrigan/Developer/sam-app/hello_world"
 runtime = "python3.9"
 source_md5 = ""
 packagetype = "Zip"
-functions = ["GetViewsFunction", "PutViewsFunction"]
+functions = ["GetViewsFunction", "PostViewsFunction"]
 
 [layer_build_definitions]
