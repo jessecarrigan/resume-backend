@@ -3,6 +3,16 @@ import boto3
 
 # import requests
 
+def handler(event, context):
+    resource = event['resource']
+    http_method = event['httpMethod']
+
+    if resource == '/views' and http_method == 'GET':
+        return get_views(event, context)
+    elif resource == '/views' and http_method == 'POST':
+        return update_views(event, context)
+    else:
+        return { "statusCode": 404, "body": "Not Found" }
 
 def get_views(event, context):
     """Sample pure Lambda function
@@ -36,7 +46,7 @@ def get_views(event, context):
 
     client = boto3.client('dynamodb')
     data = client.get_item(
-        TableName='views',
+        TableName='resume-views',
         Key={
             'id': {
                 'S': 'views'
@@ -59,7 +69,7 @@ def get_views(event, context):
 def update_views(event, context):
     client = boto3.client('dynamodb')
     count = client.get_item(
-        TableName='views',
+        TableName='resume-views',
         Key={
             'id': {
                 'S': 'views'
@@ -70,7 +80,7 @@ def update_views(event, context):
     new_count = int(count['Item']['count']['N']) + 1
 
     update_count = client.put_item(
-        TableName='views',
+        TableName='resume-views',
         Item={
             'id': {
                 'S': 'views'

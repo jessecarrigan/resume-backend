@@ -242,7 +242,7 @@ $RECYCLE.BIN/
 
 # Build files
 *.aws-sam/
-hello-world.zip
+*.zip
 .terraform/*
 terraform.tfstate*
 .terraform.tfstate.lock.info
