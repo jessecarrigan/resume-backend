@@ -244,5 +244,7 @@ $RECYCLE.BIN/
 *.aws-sam/
 hello-world.zip
 .terraform/*
+terraform.tfstate*
+.terraform.tfstate.lock.info
 
 # End of https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
