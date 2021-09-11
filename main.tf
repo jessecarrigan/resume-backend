@@ -34,6 +34,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
   acl           = "private"
   force_destroy = true
 }
+
 data "archive_file" "lambda_hello_world" {
   type = "zip"
 
