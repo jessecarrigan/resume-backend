@@ -13,6 +13,12 @@ terraform {
       version = "~> 2.2.0"
     }
   }
+  backend "s3" {
+    bucket  = "terraform-state-jesse-carrigan"
+    key     = "resume-backend/terraform.tfstate"
+    region  = "us-west-2"
+    profile = "cli"
+  }
   required_version = "~> 1.0"
 }
 
